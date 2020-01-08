@@ -74,7 +74,7 @@ install:
         export LD_LIBRARY_PATH=/opt/conda/lib/libpython:$LD_LIBRARY_PATH;
         export PATH=/opt/conda/bin:$PATH;
         $SUDO apt-get install -y python-opencv;
-        $SUDO apt update && $SUDO apt install -y libsm7 libxext7;
+        $SUDO apt update && $SUDO apt install -y libsm6 libxext6;
         
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
