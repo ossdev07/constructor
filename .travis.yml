@@ -98,7 +98,7 @@ install:
 
   # diagnostics
   - conda info
-  - conda init
+  - $SUDO conda init
   - source "$HOME"/miniconda/bin/activate
   - conda list
 
