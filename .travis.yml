@@ -15,9 +15,19 @@ matrix:
   include:
     # Linux
     - os: linux
+      arch: amd64
       language: generic
       env: PYTHON_VERSION=3.6 CONDA_VERSION=4.6
     - os: linux
+      arch: arm64
+      language: generic
+      env: PYTHON_VERSION=3.6 CONDA_VERSION=4.6
+    - os: linux
+      arch: amd64
+      language: generic
+      env: PYTHON_VERSION=2.7 CONDA_CANARY=true
+    - os: linux
+      arch: arm64
       language: generic
       env: PYTHON_VERSION=2.7 CONDA_CANARY=true
     - os: linux
@@ -44,26 +54,39 @@ install:
   - mkdir -p $HOME/condacache/pkgs
   # Install latest miniconda
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
+      if [[ "$TRAVIS_CPU_ARCH" == "arm64" ]]; then
+        wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh;
+        chmod +x archiconda.sh;
+        echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+        bash archiconda.sh -b -p /opt/conda/;
+        SUDO="sudo";
+        $SUDO chmod -R 777 /opt/conda/*;
+        $SUDO cp -r /opt/conda/bin/* /usr/bin/;
+        $SUDO cp -r /opt/conda/lib/libpython* /usr/lib/;
+        $SUDO rm -rf /usr/bin/lsb_release;
+        $SUDO cp /opt/conda/bin/conda conda.exe;
+        $SUDO chmod +x conda.exe;
+        export LD_LIBRARY_PATH=/opt/conda/lib/libpython:$LD_LIBRARY_PATH;
+        export PATH=/opt/conda/bin:$PATH;
+      else
+        wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
+        chmod +x conda.exe;
+      fi
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-osx-64.exe -O conda.exe;
     fi
-  - chmod +x conda.exe
-
   - export CONDA_PKGS_DIRS="~/condacache/pkgs"
   - export CONDA_ALWAYS_YES="true"
   - export CONDA_AUTO_UPDATE_CONDA="false"
-
   - if [ "${CONDA_CANARY}" = "true" ]; then
-      ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
+      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
     else
-      ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
+      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
     fi
-  - ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
+  - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source "$HOME"/miniconda/bin/activate
   # Install this package
   - python setup.py develop
-
   # this needs
   - mkdir $HOME/miniconda/standalone_conda
   - cp conda.exe $HOME/miniconda/standalone_conda/conda.exe
