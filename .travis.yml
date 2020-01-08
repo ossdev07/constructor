@@ -73,7 +73,6 @@ install:
         $SUDO chmod +x conda.exe;
         export LD_LIBRARY_PATH=/opt/conda/lib/:$LD_LIBRARY_PATH;
         export PATH=/opt/conda/bin:$PATH; 
-        #$SUDO pip install pillow;
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
         chmod +x conda.exe;
