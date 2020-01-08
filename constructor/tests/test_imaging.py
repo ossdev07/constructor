@@ -19,4 +19,4 @@ def test_write_images():
 
 if __name__ == '__main__':
     test_write_images()
-print ("hello")
+
