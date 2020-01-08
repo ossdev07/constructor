@@ -72,7 +72,7 @@ install:
         $SUDO cp /opt/conda/bin/conda conda.exe;
         $SUDO chmod +x conda.exe;
         #export LD_LIBRARY_PATH=/opt/conda/lib/:$LD_LIBRARY_PATH;
-        #export PATH=/opt/conda/bin:$PATH; 
+        export PATH=/opt/conda/bin:$PATH; 
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
         chmod +x conda.exe;
