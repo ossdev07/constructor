@@ -83,7 +83,7 @@ install:
   - if [ "${CONDA_CANARY}" = "true" ]; then
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
     else
-      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
+      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=2.7;
     fi
   - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source "$HOME"/miniconda/bin/activate
