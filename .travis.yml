@@ -81,7 +81,7 @@ install:
   - export CONDA_ALWAYS_YES="true"
   - export CONDA_AUTO_UPDATE_CONDA="false"
   - if [ "${CONDA_CANARY}" = "true" ]; then
-      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
+      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=2.7;
     else
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=2.7;
     fi
