@@ -94,7 +94,7 @@ setup(
         "console_scripts": ["constructor = constructor.main:main"],
     },
     install_requires=[
-        "conda >=4.5,
+        "conda >=4.5",
         "ruamel_yaml",
         "pillow >=3.1 ; platform_system=='Windows'",
         # non-python dependency: "nsis >=3.01 ; platform_system=='Windows'",
