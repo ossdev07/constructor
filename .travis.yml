@@ -101,8 +101,8 @@ install:
   - conda list
 
 script:
-  - pytest --cov=constructor constructor
-  - python scripts/run_examples.py
+  - $SUDO pytest --cov=constructor constructor
+  - $SUDO python scripts/run_examples.py
 
 after_success:
   - codecov
