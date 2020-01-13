@@ -99,7 +99,7 @@ install:
   - conda list
 
 script:
-  - $SUDO pytest --cov=constructor constructor
+  - pytest --cov=constructor constructor
   - $SUDO python scripts/run_examples.py
 
 after_success:
