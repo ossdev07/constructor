@@ -68,16 +68,15 @@ install:
         $SUDO cp -r /opt/conda/bin/* /usr/bin/;
         $SUDO cp -r /opt/conda/lib/libpython* /usr/lib/;
         $SUDO cp /opt/conda/bin/conda conda.exe;
-        export PATH=$PATH:/opt/conda/bin;
-        $SUDO chmod +x conda.exe; 
+        export PATH=$PATH:/opt/conda/bin; 
         python setup.py install;
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
-        chmod +x conda.exe;
       fi
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-osx-64.exe -O conda.exe;
     fi
+  - $SUDO chmod +x conda.exe;
   - export CONDA_PKGS_DIRS="~/condacache/pkgs"
   - export CONDA_ALWAYS_YES="true"
   - export CONDA_AUTO_UPDATE_CONDA="false"
