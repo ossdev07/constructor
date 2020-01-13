@@ -32,6 +32,10 @@ def run_examples():
     for i, example_path in enumerate(sorted(example_paths)):
         print(example_path)
         cmd = ['constructor', example_path]
+        print(cmd)
+        print('\n')
+        print('subprocess.PIPE')
+        print('\n')
         p = subprocess.Popen(cmd, stderr=subprocess.PIPE)
         print('\n\n# Testing example {}:\n--------------------'.format(i + 1))
         print(example_path)
