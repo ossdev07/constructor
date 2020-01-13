@@ -97,12 +97,12 @@ install:
   - conda info
   - conda init
   - source "$HOME"/miniconda/bin/activate
-  - $SUDO export PATH=$PATH:/opt/conda/bin;
+  - export PATH=$PATH:/opt/conda/bin;
   - conda list
 
 script:
   - pytest --cov=constructor constructor
-  - $SUDO python scripts/run_examples.py
+  - python scripts/run_examples.py
 
 after_success:
   - codecov
