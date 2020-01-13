@@ -64,7 +64,6 @@ install:
         bash archiconda.sh -b -p /opt/conda/;
         SUDO="sudo";
         $SUDO chmod -R 777 /opt/conda/*;
-        #$SUDO cp -r /opt/conda/bin/* /usr/bin/;
         $SUDO cp -r /opt/conda/lib/libpython* /usr/lib/;
         $SUDO rm -rf /usr/bin/lsb_release;
         $SUDO cp /opt/conda/bin/conda conda.exe;
