@@ -97,6 +97,7 @@ install:
   - conda info
   - conda init
   - source "$HOME"/miniconda/bin/activate
+  - export PATH=$PATH:/opt/conda/bin;
   - conda list
 
 script:
