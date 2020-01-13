@@ -68,7 +68,7 @@ install:
         $SUDO cp -r /opt/conda/bin/* /usr/bin/;
         $SUDO cp -r /opt/conda/lib/libpython* /usr/lib/;
         $SUDO cp /opt/conda/bin/conda conda.exe;
-        export PATH=$PATH:/home/travis/build/ossdev07/constructor;
+        export PATH=$PATH:/home/travis/build/ossdev07/;
         $SUDO chmod +x conda.exe; 
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
@@ -87,7 +87,7 @@ install:
     fi
   - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source "$HOME"/miniconda/bin/activate
-  # Install this pa$SUDO ckage
+  # Install this package
   - $SUDO python setup.py develop
   # this needs
   - $SUDO mkdir $HOME/miniconda/standalone_conda
