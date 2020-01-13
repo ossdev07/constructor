@@ -37,6 +37,7 @@ def run_examples():
         print(subprocess.PIPE)
         print('\n')
         p = subprocess.Popen(cmd, stderr=subprocess.PIPE)
+        print(cmd)
         print('\n\n# Testing example {}:\n--------------------'.format(i + 1))
         print(example_path)
         print('\n')
