@@ -34,7 +34,7 @@ def run_examples():
         cmd = ['constructor', example_path]
         print(cmd)
         print('\n')
-        print('subprocess.PIPE')
+        print(subprocess.PIPE)
         print('\n')
         p = subprocess.Popen(cmd, stderr=subprocess.PIPE)
         print('\n\n# Testing example {}:\n--------------------'.format(i + 1))
