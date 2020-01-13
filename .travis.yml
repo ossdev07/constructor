@@ -63,7 +63,6 @@ install:
         chmod +x archiconda.sh;
         echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
         bash archiconda.sh -b -p /opt/conda/;
-        ln -s /opt/conda/ .;
         SUDO="sudo";
         $SUDO chmod -R 777 /opt/conda/*;
         $SUDO cp -r /opt/conda/bin/* /usr/bin/;
