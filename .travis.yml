@@ -92,13 +92,13 @@ install:
   # Install this package
   - $SUDO python setup.py develop
   # this needs
-  - $SUDO mkdir $HOME/miniconda/standalone_conda
-  - $SUDO cp conda.exe $HOME/miniconda/standalone_conda/conda.exe
+  - $SUDO mkdir $HOME/miniconda1/standalone_conda
+  - $SUDO cp conda.exe $HOME/miniconda1/standalone_conda/conda.exe
 
   # diagnostics
   - conda info
   - conda init
-  - source "$HOME"/miniconda/bin/activate
+  - source "$HOME"/miniconda1/bin/activate
   - conda list
 
 script:
