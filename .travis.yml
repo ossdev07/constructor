@@ -61,9 +61,9 @@ install:
       if [[ "$TRAVIS_CPU_ARCH" == "arm64" ]]; then
         wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh;
         chmod +x archiconda.sh;
-        echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
         bash archiconda.sh -b -p /opt/conda/;
         SUDO="sudo";
+        $SUDO cp -r /opt/conda/* .;
         $SUDO chmod -R 777 /opt/conda/*;
         $SUDO cp -r /opt/conda/bin/* /usr/bin/;
         $SUDO cp -r /opt/conda/lib/libpython* /usr/lib/;
